@@ -24,12 +24,25 @@ Le installazioni locali esistenti restano indipendenti: questa fase non include 
 
 ## Quota AI
 
-Ogni utente dispone di un limite di 1 USD per mese UTC, subordinato al limite condiviso di 20 USD.
+L'AI è attualmente disabilitata. Le funzioni manuali restano disponibili quando
+il servizio è aperto. Una futura attivazione richiede limiti di spesa verificati
+e controlli sulla riservatezza dei risultati.
+
+Quando abilitata, ogni utente dispone di un limite di 1 USD per mese UTC,
+subordinato al limite condiviso di 20 USD.
 Il servizio prenota il costo massimo prima della chiamata e conguaglia quando il provider comunica il costo.
 Le richieste dall’esito incerto mantengono la prenotazione finché non vengono riconciliate.
 Non ci sono ricariche o addebiti automatici agli utenti. Consumo, disponibilità e rinnovo sono visibili
 nelle impostazioni. Esaurire la quota AI non blocca le funzioni manuali online.
 
-Le richieste AI inviano a OpenRouter i dati necessari all’elaborazione. Nella prima versione Cloud
-sono abilitate solo le operazioni testuali contabilizzabili. Audio, visione, OCR a pagamento e
-indicizzazione con embedding non sono inclusi finché non hanno controlli di costo verificati.
+Le richieste AI eventualmente abilitate inviano a OpenRouter i dati necessari
+all’elaborazione. Audio, visione, OCR a pagamento e indicizzazione con embedding
+restano esclusi finché non hanno controlli di costo e riservatezza verificati.
+
+## Dataset riservati
+
+Il servizio non consente di scaricare archivi o dataset completi, neppure tramite
+chat o API. Per le selezioni nell'interfaccia sono mostrati solo nomi e codici
+necessari; i parametri agronomici riservati non fanno parte delle risposte del catalogo.
+I dati inseriti dall'utente e le esportazioni autorizzate della sua azienda restano
+distinti dai dataset del gestore. Si applicano i [termini dell'edizione](TERMS.md).
