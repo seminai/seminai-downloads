@@ -1,8 +1,9 @@
 # Guida a Seminai
 
-La distribuzione pubblica e la registrazione dei nuovi account sono in preparazione.
-Gli utenti Core esistenti continuano ad accedere a [app.seminai.tech](https://app.seminai.tech).
-Le istruzioni di download e registrazione seguenti si applicano dopo l’apertura.
+La versione preliminare 1.1.1 è scaricabile da [download.seminai.tech](https://download.seminai.tech).
+La registrazione gratuita è aperta con verifica email obbligatoria.
+Nuovi utenti e utenti Core esistenti accedono allo stesso servizio su
+[app.seminai.tech](https://app.seminai.tech).
 
 ## Account e installazione
 
@@ -18,27 +19,33 @@ Controlla `SHA256SUMS.txt` e le note della versione; la disponibilità di una fi
 solo quando verificata e le ricevute (notarizzazione Apple, Authenticode Windows, firma GPG)
 sono allegate alla release. Non è necessario disattivare le protezioni del sistema operativo.
 
-Pacchetti previsti, ancora in verifica:
+Pacchetti pubblicati:
 
 | Sistema | Architettura | Formato |
 | --- | --- | --- |
-| macOS | Apple Silicon e Intel | DMG |
+| macOS | Apple Silicon e Intel | DMG e ZIP |
 | Windows | x64 | Installer EXE |
 | Linux | x64 e ARM64 | AppImage e DEB |
 
-Su Windows ARM la prova prevista riguarda l'emulazione x64: non è un pacchetto ARM nativo.
-Le note della versione pubblicata confermeranno sistemi operativi e prove effettivamente completate.
+I DMG Mac sono firmati, notarizzati e corredati dal ticket Apple. L'installer Windows,
+l'app e il disinstallatore sono firmati; la verifica crittografica è stata eseguita
+senza un ambiente Windows. Il collaudo nativo Windows è stato rinviato dal gestore.
+L'emulazione su Windows ARM non è verificata e non viene distribuito un pacchetto ARM nativo.
+Tutti i pacchetti Linux contengono il client controllato; il DEB ARM64 ha superato
+installazione, avvio e rimozione in un contenitore isolato. Questo non certifica
+ogni distribuzione o tutte le interazioni desktop. Per questo la release è preliminare.
 
 Verifica dei file scaricati:
 
 ```sh
-shasum -a 256 -c SHA256SUMS.txt --ignore-missing   # Linux: sha256sum -c SHA256SUMS.txt --ignore-missing
+shasum -a 256 "<file scaricato>"                   # Linux: sha256sum "<file scaricato>"
 gpg --import seminai-release-signing-key.asc        # confronta l'impronta con quella pubblicata qui sotto
 gpg --verify SHA256SUMS.txt.asc SHA256SUMS.txt
 ```
 
 Su Windows: `Get-FileHash .\<file> -Algorithm SHA256`. L'impronta della chiave GPG di
 release è `C03C7844C7FD8F6B6C9B8DE48C567C22DBDECFBC`.
+Confronta il risultato SHA-256 con la riga dello stesso file in `SHA256SUMS.txt`.
 
 ## Dati e disponibilità
 
@@ -51,16 +58,14 @@ Le installazioni locali esistenti restano indipendenti: questa fase non include 
 
 L'AI dei nuovi account gratuiti è attualmente disabilitata. Le condizioni e le
 integrazioni degli account Core esistenti restano invariate. Le funzioni manuali
-saranno disponibili ai nuovi utenti dopo l'apertura delle registrazioni.
+sono disponibili ai nuovi utenti dopo la verifica dell'email.
 L'attivazione dell'AI gratuita richiede limiti di spesa verificati e controlli
 sulla riservatezza dei risultati; le integrazioni con costi richiedono l'abilitazione del gestore.
 
-Quando abilitata, ogni utente dispone di un limite di 1 USD per mese UTC,
-subordinato al limite condiviso di 20 USD.
-Il servizio prenota il costo massimo prima della chiamata e conguaglia quando il provider comunica il costo.
-Le richieste dall’esito incerto mantengono la prenotazione finché non vengono riconciliate.
-Non ci sono ricariche o addebiti automatici agli utenti. Consumo, disponibilità e rinnovo sono visibili
-nelle impostazioni. Esaurire la quota AI non blocca le funzioni manuali online.
+Il piano previsto include un limite di 1 USD per utente al mese UTC, subordinato
+a 20 USD condivisi. Il registro dei costi, le prenotazioni e il rinnovo delle quote
+devono essere completati e verificati prima dell'attivazione. Non ci sono ricariche
+o addebiti automatici agli utenti. Le funzioni manuali online restano indipendenti dall'AI.
 
 Le richieste AI eventualmente abilitate inviano a OpenRouter i dati necessari
 all’elaborazione. Audio, visione, OCR a pagamento e indicizzazione con embedding
