@@ -1,10 +1,12 @@
-# Guida a Seminai Cloud
+# Guida a Seminai
 
-Il servizio è in preparazione. Le istruzioni seguenti si applicano dopo l’apertura.
+La distribuzione pubblica e la registrazione dei nuovi account sono in preparazione.
+Gli utenti Core esistenti continuano ad accedere a [app.seminai.tech](https://app.seminai.tech).
+Le istruzioni di download e registrazione seguenti si applicano dopo l’apertura.
 
 ## Account e installazione
 
-1. Usa il browser su `cloud.seminai.tech`, oppure scarica un installer Cloud dalla pagina ufficiale.
+1. Usa il browser su [app.seminai.tech](https://app.seminai.tech), oppure scarica un installer dalla pagina ufficiale.
 2. Crea un account gratuito e conferma l’indirizzo tramite l’email ricevuta.
 3. Accedi e crea la tua azienda. Gli account hanno privilegi ordinari.
 
@@ -12,8 +14,31 @@ Puoi richiedere un nuovo messaggio di verifica dalla pagina di accesso. Se dimen
 usa “Password dimenticata”; il collegamento ricevuto scade e può essere utilizzato una sola volta.
 
 Gli installer si chiamano **Seminai-Cloud-…**. Le vecchie edizioni locali sono separate.
-Controlla SHA256SUMS.txt e le note della versione; la disponibilità di una firma viene dichiarata
-solo quando verificata. Non è necessario disattivare le protezioni del sistema operativo.
+Controlla `SHA256SUMS.txt` e le note della versione; la disponibilità di una firma viene dichiarata
+solo quando verificata e le ricevute (notarizzazione Apple, Authenticode Windows, firma GPG)
+sono allegate alla release. Non è necessario disattivare le protezioni del sistema operativo.
+
+Pacchetti previsti, ancora in verifica:
+
+| Sistema | Architettura | Formato |
+| --- | --- | --- |
+| macOS | Apple Silicon e Intel | DMG |
+| Windows | x64 | Installer EXE |
+| Linux | x64 e ARM64 | AppImage e DEB |
+
+Su Windows ARM la prova prevista riguarda l'emulazione x64: non è un pacchetto ARM nativo.
+Le note della versione pubblicata confermeranno sistemi operativi e prove effettivamente completate.
+
+Verifica dei file scaricati:
+
+```sh
+shasum -a 256 -c SHA256SUMS.txt --ignore-missing   # Linux: sha256sum -c SHA256SUMS.txt --ignore-missing
+gpg --import seminai-release-signing-key.asc        # confronta l'impronta con quella pubblicata qui sotto
+gpg --verify SHA256SUMS.txt.asc SHA256SUMS.txt
+```
+
+Su Windows: `Get-FileHash .\<file> -Algorithm SHA256`. L'impronta della chiave GPG di
+release è `C03C7844C7FD8F6B6C9B8DE48C567C22DBDECFBC`.
 
 ## Dati e disponibilità
 
@@ -24,9 +49,11 @@ Le installazioni locali esistenti restano indipendenti: questa fase non include 
 
 ## Quota AI
 
-L'AI è attualmente disabilitata. Le funzioni manuali restano disponibili quando
-il servizio è aperto. Una futura attivazione richiede limiti di spesa verificati
-e controlli sulla riservatezza dei risultati.
+L'AI dei nuovi account gratuiti è attualmente disabilitata. Le condizioni e le
+integrazioni degli account Core esistenti restano invariate. Le funzioni manuali
+saranno disponibili ai nuovi utenti dopo l'apertura delle registrazioni.
+L'attivazione dell'AI gratuita richiede limiti di spesa verificati e controlli
+sulla riservatezza dei risultati; le integrazioni con costi richiedono l'abilitazione del gestore.
 
 Quando abilitata, ogni utente dispone di un limite di 1 USD per mese UTC,
 subordinato al limite condiviso di 20 USD.
